@@ -1,0 +1,116 @@
+<nz-layout>
+  <nz-sider class="sider">Sider</nz-sider>
+  <nz-layout>
+    <nz-content>
+      <div class="waviy">
+        <span style="--i: 1">S</span>
+        <span style="--i: 2">C</span>
+        <span style="--i: 3">H</span>
+        <span style="--i: 4">E</span>
+        <span style="--i: 5">D</span>
+        <span style="--i: 6">U</span>
+        <span style="--i: 7">L</span>
+        <span style="--i: 8">E</span>
+        <span style="--i: 9">R</span>
+      </div>
+
+      <div nz-row>
+        <div nz-col nzSpan="12" class="div-background">
+          <span>Date</span>
+
+          <nz-range-picker
+            [nzShowTime]="{ nzFormat: 'HH:mm' }"
+            nzFormat="yyyy-MM-dd HH:mm"
+            ngModel
+            (ngModelChange)="onChange($event)"
+            (nzOnCalendarChange)="onCalendarChange($event)"
+            (nzOnOk)="onOk($event)"
+          ></nz-range-picker>
+
+          <div>
+            <form nz-form fxLayout="column" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+                <nz-form-item>
+                    <nz-form-label nzRequired>Description</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="TYPE DESCRIPTION" id="description" formControlName="description"/>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-label nzRequired>Priority</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="TYPE PRIORITY" id="priority" formControlName="priority"/>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-label nzRequired>End</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="TYPE END" id="end" formControlName="end"/>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control>
+                        <button nz-button nzType="primary">Guardar</button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+          </div>
+        </div>
+        <div nz-col nzSpan="12" class="div-background">
+          <nz-alert
+            nzMessage="Your selected date: {{
+              selectedValue | date : 'yyyy-MM-dd'
+            }}"
+          ></nz-alert>
+        </div>
+      </div>
+
+      <nz-calendar
+        [(ngModel)]="selectedValue"
+        (nzSelectChange)="selectChange($event)"
+      >
+        <ul *nzDateCell="let date" class="events">
+          <ng-container [ngSwitch]="date.getDate()">
+            <ng-container *ngSwitchCase="8">
+              <li *ngFor="let item of listDataMap.eight">
+                <nz-badge
+                  [nzStatus]="item.type"
+                  [nzText]="item.content"
+                ></nz-badge>
+              </li>
+            </ng-container>
+            <ng-container *ngSwitchCase="10">
+              <li *ngFor="let item of listDataMap.ten">
+                <nz-badge
+                  [nzStatus]="item.type"
+                  [nzText]="item.content"
+                ></nz-badge>
+              </li>
+            </ng-container>
+            <ng-container *ngSwitchCase="11">
+              <li *ngFor="let item of listDataMap.eleven">
+                <nz-badge
+                  [nzStatus]="item.type"
+                  [nzText]="item.content"
+                ></nz-badge>
+              </li>
+            </ng-container>
+          </ng-container>
+        </ul>
+        <ng-container *nzMonthCell="let month">
+          <div *ngIf="getMonthData(month) as monthData" class="notes-month">
+            <section>{{ monthData }}</section>
+            <span>Backlog number</span>
+          </div>
+        </ng-container>
+      </nz-calendar>
+    </nz-content>
+    <nz-footer>Footer</nz-footer>
+  </nz-layout>
+  <nz-sider class="sider">Sider</nz-sider>
+</nz-layout>
+<!--
+
+    -->

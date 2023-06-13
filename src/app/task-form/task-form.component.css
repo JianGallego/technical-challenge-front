@@ -1,0 +1,91 @@
+.div-background{
+    padding: 5px;
+    border: red 5px solid;
+    background-color: dodgerblue;
+}
+
+.events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .events .ant-badge-status {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    text-overflow: ellipsis;
+    font-size: 12px;
+  }
+
+  .notes-month {
+    text-align: center;
+    font-size: 28px;
+  }
+
+  .notes-month section {
+    font-size: 28px;
+  }
+
+  .waviy {
+    position: relative;
+    background-color: black;
+  }
+  .waviy span {
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    color: #ffffff;
+    text-transform: uppercase;
+    animation: flip 2s infinite;
+    animation-delay: calc(.2s * var(--i))
+  }
+  @keyframes flip {
+    0%,80% {
+      transform: rotateY(360deg) 
+    }
+  }
+
+  :host {
+    text-align: center;
+  }
+
+  nz-header,
+  nz-footer {
+    background: #7dbcea;
+    color: #fff;
+  }
+
+  nz-footer {
+    line-height: 1.5;
+  }
+
+  nz-sider {
+    background: #3ba0e9;
+    color: #fff;
+    line-height: 120px;
+  }
+
+  nz-content {
+    background: rgba(16, 142, 233, 1);
+    color: #fff;
+    min-height: 120px;
+    line-height: 120px;
+  }
+
+  nz-layout {
+    margin-bottom: 48px;
+  }
+
+  nz-layout nz-layout,
+  nz-layout:last-child {
+    margin: 0;
+  }
+  
+
+  .sider{
+    @media (max-width: 1000px) {
+        display: none; 
+      }
+  }
+  
